@@ -30,24 +30,27 @@ public:
 //        return -1;
 //    }
     
-    int binarySearch(int arr[], int l, int r, int x)
+    int binarySearch(vector<int> test_data, int l, int r, int x)
     {
         if (r >= l) {
+            // The right hand side is the length of the current array
+            // -1 is due to 0 indexing
+            
             int mid = l + (r - l) / 2;
      
             // If the element is present at the middle
             // itself
-            if (arr[mid] == x)
+            if (test_data[mid] == x)
                 return mid;
      
             // If element is smaller than mid, then
             // it can only be present in left subarray
-            if (arr[mid] > x)
-                return binarySearch(arr, l, mid - 1, x);
+            if (test_data[mid] > x)
+                return binarySearch(test_data, l, mid - 1, x);
      
             // Else the element can only be present
             // in right subarray
-            return binarySearch(arr, mid + 1, r, x);
+            return binarySearch(test_data, mid + 1, r, x);
         }
      
         // We reach here when element is not
@@ -66,7 +69,7 @@ int main(int argc, const char * argv[]) {
     
 //    std::cout << "Hello, World!\n";
     Solution* solution = new Solution();
-    cout << solution -> search(test_data, 0, test_data.size() - 1, target);
+    cout << solution -> binarySearch(test_data, 0, test_data.size() - 1, target);
     return 0;
     
 }
